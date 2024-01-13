@@ -1,0 +1,147 @@
+body {
+    background-color: #dff0d8;
+    font-family: Arial, sans-serif;
+  }
+  
+  header {
+    background-color: #27ae60;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  #logoutBtn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #f2f2f2;
+    cursor: pointer;
+  }
+  
+  #welcomeMessage {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  #mealDetails {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    max-width: 800px;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  #mealName,
+  #mealCategory,
+  #mealInstructions {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  #mealImage {
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    max-width: 100%;
+  }
+  
+  #mealVideo {
+    background-color: #27ae60;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 0.5rem 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease;
+  }
+  
+  #mealVideo:hover {
+    background-color: #1b8d44;
+  }
+  
+  #recipeList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #recipeList a {
+    background-color: white;
+    border: 2px solid #27ae60;
+    border-radius: 5px;
+    color: #27ae60;
+    display: block;
+    font-size: 1.2rem;
+    margin: 1rem;
+    padding: 0.5rem 2rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  
+  #recipeList a:hover {
+    background-color: #27ae60;
+    color: white;
+  }
+  
+  .accordion {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    max-width: 800px;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .accordion .card-header {
+    background-color: #27ae60;
+    border-radius: 5px 5px 0 0;
+    color: white;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .accordion .card-header:hover {
+    background-color: #1b8d44;
+  }
+  
+  .accordion .card-body {
+    padding: 1rem;
+  }
+  
+  .accordion ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .accordion li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .accordion a {
+    color: #27ae60;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  .accordion a:hover {
+    color: white;
+  }
+  
+  .btn-link {
+    color: white !important;
+  }
