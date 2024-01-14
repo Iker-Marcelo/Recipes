@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe Details</title>
+    <link rel="stylesheet" type="text/css" href="detallerecetas.css" />
+  </head>
+  <header><h1>Recipe Details</h1></header>
+  <body>
+    
+    <div id="recipeDetails"></div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Obtiene el parámetro de la URL llamado 'id'
+        const urlParams = new URLSearchParams(window.location.search);
+        const recipeId = urlParams.get("id");
+
+        console.log("recipeId:", recipeId);
+
+        if (recipeId) {
+          // Hacer la solicitud a la API de comidas para obtener detalles de la receta por ID
+          fetch(
+            `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`
+          )
+            .then((response) => response.json())
+            .then((mealData) => {
+              const detailedRecipe = mealData.meals ? mealData.meals[0] : null;
+
+              console.log("detailedRecipe:", detailedRecipe);
+
+              if (detailedRecipe) {
+                // Muestra la información de la receta en la página
+                const recipeDetailsDiv =
+                  document.getElementById("recipeDetails");
+                const categoryName =
+                  detailedRecipe.strCategory || "Categoría no disponible";
+                const instructions =
+                  detailedRecipe.strInstructions ||
+                  "Instrucciones no disponibles";
+                const strYoutube =
+                  detailedRecipe.strYoutube || "Video no disponibles";
+                const ingredientsList = [];
+                for (let i = 1; i <= 20; i++) {
+                  const ingredient = detailedRecipe[`strIngredient${i}`];
+                  const measure = detailedRecipe[`strMeasure${i}`];
+                  if (ingredient && measure) {
+                    ingredientsList.push(`${ingredient} - ${measure}`);
+                  }
+                }
+
+                recipeDetailsDiv.innerHTML = `
+                        <h2>${
+                          detailedRecipe.strMeal || "Nombre no disponible"
+                        }</h2>
+                        <p>Category: ${categoryName}</p>
+                        <h3>Ingredients</h3>
+                        <ul>${ingredientsList.map(ingredient => `<li>${ingredient}</li>`).join('')}</ul>
+                        <p>Instructions: ${instructions}</p>
+                        <p><a href="${strYoutube}" target="_blank">Watch video</a></p>
+                        <img src="${
+                          detailedRecipe.strMealThumb
+                        }" alt="Imagen de la receta" style="max-width: 100%">
+                    `;
+              } else {
+                console.error("Detalles de la receta no disponibles.");
+              }
+            })
+            .catch((error) =>
+              console.error("Error obteniendo detalles de la receta:", error)
+            );
+        } else {
+          console.error("No se proporcionó un ID de receta en la URL.");
+        }
+      });
+    </script>
+  </body>
+</html>
